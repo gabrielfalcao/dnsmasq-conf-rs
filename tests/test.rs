@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 use std::net::Ipv4Addr;
 use std::str::FromStr;
 
-use dnsmasq_conf_rs::{ConfFormat, Config, ConfigAttribute, Error, Result};
+use dnsmasq_conf::{ConfFormat, Config, ConfigAttribute, Error, Result};
 use hickory_proto::rr::Name;
 use iocore_test::folder_path;
 use k9::assert_equal;
