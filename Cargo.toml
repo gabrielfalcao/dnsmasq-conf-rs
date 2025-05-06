@@ -1,18 +1,27 @@
 [package]
-name = "dnsmasq-conf-rs"
-version = "0.0.1"
-description = "dnsmasq-conf-rs library"
+name = "dnsmasq-conf"
+version = "0.0.0"
+
+description = """dnsmasq-conf is a safe library providing
+data-structures to parse
+[dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) configuration
+files from rust.
+"""
+
 readme = "README.md"
 homepage = "https://crates.io/crates/dnsmasq-conf-rs"
-license = "MIT"
+license = "MIT OR Apache-2.0"
+keywords = ["parser", "parsing", "network", "serialization", "utility"]
+authors = ["Gabriel DeMoura <gabrielteratos@gmail.com>"]
+categories = ["config", "parsing"]
 edition = "2021"
 autoexamples = false
 autobenches = false
 
 
 [lib]
-name = "dnsmasq_conf_rs"
-path = "dnsmasq-conf-rs/lib.rs"
+name = "dnsmasq_conf"
+path = "dnsmasq-conf/lib.rs"
 # https://doc.rust-lang.org/reference/linkage.html
 # crate-type = ["dylib"]  # #["lib", "dylib", "cdylib", "staticlib"]
 doctest = false

@@ -11,7 +11,7 @@ use pest::iterators::Pair;
 use pest::Parser;
 use pest_derive::Parser;
 #[derive(Parser, Debug, Clone)]
-#[grammar = "dnsmasq-conf-rs/grammar.pest"]
+#[grammar = "dnsmasq-conf/grammar.pest"]
 pub struct ConfFormat;
 impl ConfFormat {
     pub fn parse_into_config_attributes(string: &str) -> Result<Vec<ConfigAttribute>> {
