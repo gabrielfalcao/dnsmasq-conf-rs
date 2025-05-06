@@ -1,0 +1,54 @@
+config = ${ SOI ~ (NEWLINE* ~ attribute ~ NEWLINE*)* ~ EOI}
+
+address = ${
+    "address=/" ~
+    dns_name_glob ~
+    "/" ~
+    ip_address?
+}
+key = @{ ASCII_ALPHA+ ~ ("-" ~ ASCII_ALPHA+)* }
+boolean = @{ ASCII_ALPHA+ ~ ("-" ~ ASCII_ALPHA+)* }
+conf_file = ${ "conf-file" ~ "=" ~ path }
+server = ${ "server" ~ "=" ~ ip_address }
+listen_address = ${ "listen-address" ~ "=" ~ ip_address }
+port_limit = ${ "port-limit" ~ "=" ~ int }
+cache_size = ${ "cache-size" ~ "=" ~ int }
+port = ${ "port" ~ "=" ~ int }
+min_port = ${ "min-port" ~ "=" ~ int }
+max_port = ${ "max-port" ~ "=" ~ int }
+auth_server = ${ "auth-server" ~ "=" ~ dns_name ~ "," ~ (interface | ip_address) }
+edns_packet_max = ${ "edns-packet-max" ~ "=" ~ int }
+except_interface =${ "except-interface" ~ "=" ~ interface }
+log_facility = ${ "log-facility" ~ "=" ~ path }
+
+key_value = ${ key ~ "=" ~ value }
+
+attribute = _{conf_file | log_facility | address | listen_address | server | cache_size |key_value | boolean  }
+ip_address = @{ int ~ "." ~ int ~ "." ~ int ~ "." ~ int  }
+ipv4_int    =  @{ ("0" | '1'..'9' | '1'..'9' ~ '0'..'9' |  '1' .. '2' ~ '0'..'9' ~ '0'..'9' ) }
+int   = @{ ("0" | '1'..'9' ~ '0'..'9' * ) }
+interface = @{ ASCII_ALPHA_LOWER+ ~ ASCII_DIGIT+ ~ASCII_ALPHA_LOWER*  }
+
+double_quoted_string  = @{ "\"" ~ (!("\"") ~ ANY)* ~ "\""}
+single_quoted_string  = @{ "\'" ~ (!("\'") ~ ANY)* ~ "\'"}
+
+string = @{
+    double_quoted_string |
+    single_quoted_string
+}
+path = @{
+    (!forbidden_ebcdic_character ~ ( "/" | ":" | "." | "-" |  "_" | "~" | WHITESPACE | ASCII_ALPHA))+
+}
+forbidden_ebcdic_character = _{
+    ('\x00' .. '\x1F' | "\xff" | "=" | "<" | ">" | "(" | ")" | "[" | "]" )
+}
+
+value = ${ (ip_address | int | path | string) }
+dns_name = @{ (ASCII_ALPHA_LOWER | ASCII_DIGIT | "-" | ".")+ }
+dns_name_glob = @{ (ASCII_ALPHA_LOWER | ASCII_DIGIT | "-" | "." | "*")+ }
+
+eq = _{ "=" }
+
+
+delimiter = _{ NEWLINE+ }
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
