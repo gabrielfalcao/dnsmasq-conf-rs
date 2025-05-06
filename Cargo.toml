@@ -30,7 +30,7 @@ bench = false
 [dependencies]
 clap = { version = "4.5.37", features = ["derive", "env", "string", "unicode", "wrap_help"] }
 hickory-proto = "0.25.2"
-iocore = { version = "3.0.2" }
+iocore = { version = "3.0.3" }
 pest = "2.8.0"
 pest_derive = "2.8.0"
 serde = { version = "1.0.219", features = ["derive"] }

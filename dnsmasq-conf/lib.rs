@@ -343,7 +343,7 @@ pub struct Config {
 impl Config {
     pub fn new(path: &Path) -> Config {
         Config {
-            path: valid_path(path).unwrap().relative_to_cwd().tildify(),
+            path: valid_path(path).unwrap().collapse(),
             conf_file: Vec::default(),
             server: Vec::default(),
             strict_order: bool::default(),
@@ -489,7 +489,7 @@ impl Config {
                     vec![last_parent_path.clone(), main_conf_parent_path.clone(), Path::cwd()];
                 let lookup_paths = potential_parents
                     .iter()
-                    .map(|h| h.relative_to_cwd().tildify().to_string())
+                    .map(|h| h.collapse().to_string())
                     .collect::<Vec<String>>();
                 loop {
                     if potential_parents.is_empty() {
