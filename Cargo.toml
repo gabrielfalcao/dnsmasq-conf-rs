@@ -9,7 +9,8 @@ files from rust.
 """
 
 readme = "README.md"
-homepage = "https://crates.io/crates/dnsmasq-conf-rs"
+homepage = "https://crates.io/crates/dnsmasq-conf"
+repository = "https://github.com/gabrielfalcao/dnsmasq-conf-rs"
 license = "MIT OR Apache-2.0"
 keywords = ["parser", "parsing", "network", "serialization", "utility"]
 authors = ["Gabriel DeMoura <gabrielteratos@gmail.com>"]
