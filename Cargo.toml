@@ -21,7 +21,7 @@ autobenches = false
 
 [lib]
 name = "dnsmasq_conf"
-path = "dnsmasq-conf/lib.rs"
+path = "src/lib.rs"
 # https://doc.rust-lang.org/reference/linkage.html
 # crate-type = ["dylib"]  # #["lib", "dylib", "cdylib", "staticlib"]
 doctest = false
