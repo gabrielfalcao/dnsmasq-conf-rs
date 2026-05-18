@@ -2,3 +2,4 @@
 /target
 Cargo.lock
 __test_files__
+.logs/
